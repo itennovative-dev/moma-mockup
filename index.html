@@ -1,0 +1,835 @@
+<!doctype html>
+<html lang="it">
+<head>
+<!-- Proposte di restyling Moma Streetwear · Ennovative -->
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Restyling Moma Streetwear</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wdth,wght@62..125,400..900&family=Big+Shoulders+Display:wght@600..900&family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Familjen+Grotesk:wght@400..700&display=swap" rel="stylesheet">
+<style>
+/* Quattro mondi su un solo prodotto: ogni variante ha i suoi token, i pezzi comuni (menu, pulsanti, coppia) li leggono */
+:root{color-scheme:light;--ease:cubic-bezier(.32,.72,0,1);--spring:cubic-bezier(.34,1.56,.64,1)}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:#0b0b0b;color:#111}
+img{display:block;max-width:100%}
+button{font:inherit;color:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+a{color:inherit}
+::selection{background:var(--sel,#111);color:var(--selInk,#fff)}
+:focus-visible{outline:2px solid var(--focus,#3b82f6);outline-offset:3px}
+.v{display:none;min-height:100vh;overflow-x:clip}.v.on{display:block}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.logo{display:block;background:currentColor;-webkit-mask:url(img/logo.svg) center/contain no-repeat;mask:url(img/logo.svg) center/contain no-repeat;aspect-ratio:520/172}
+.wrap{padding-inline:clamp(16px,3vw,40px)}
+svg.i{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+
+/* ---------- menu a isola ---------- */
+.nav{position:fixed;z-index:40;top:calc(12px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);width:min(1120px,calc(100% - 24px));display:flex;align-items:center;justify-content:space-between;gap:16px;padding:8px 8px 8px 22px;border-radius:999px;background:var(--navBg);color:var(--navInk);box-shadow:0 0 0 1px var(--navLine),0 12px 40px -12px rgba(0,0,0,.35);-webkit-backdrop-filter:blur(18px) saturate(1.4);backdrop-filter:blur(18px) saturate(1.4);transition:background .6s var(--ease),color .6s var(--ease)}
+.nav .logo{height:20px}
+.nav .links{display:flex;gap:4px}
+.nav .links a{text-decoration:none;font-weight:600;font-size:14px;padding:10px 14px;border-radius:999px;transition:background .3s var(--ease)}
+.nav .links a:hover{background:var(--navHover)}
+.nav .right{display:flex;gap:6px;align-items:center}
+.cartb{display:flex;align-items:center;gap:8px;border:0;border-radius:999px;padding:10px 16px;background:var(--navHover);font-weight:700;font-size:14px}
+.cartb b{min-width:22px;height:22px;border-radius:999px;display:grid;place-items:center;background:var(--navInk);color:var(--navInv);font-size:12px}
+.cartb.bump b{animation:bump .5s var(--spring)}
+@keyframes bump{40%{transform:scale(1.45)}}
+.burger{display:none;width:44px;height:44px;border:0;border-radius:999px;background:var(--navHover);position:relative}
+.burger span{position:absolute;left:14px;right:14px;height:1.6px;background:currentColor;border-radius:2px;transition:transform .5s var(--ease),top .5s var(--ease)}
+.burger span:first-child{top:18px}.burger span:last-child{top:25px}
+.nav.open .burger span:first-child{top:21.5px;transform:rotate(45deg)}
+.nav.open .burger span:last-child{top:21.5px;transform:rotate(-45deg)}
+.menu{position:fixed;inset:0;z-index:39;background:var(--menuBg);color:var(--navInk);-webkit-backdrop-filter:blur(30px);backdrop-filter:blur(30px);display:flex;flex-direction:column;justify-content:center;gap:6px;padding:100px 24px 120px;opacity:0;pointer-events:none;transition:opacity .5s var(--ease)}
+.menu a{font:800 clamp(40px,11vw,64px)/1 var(--display);letter-spacing:-.03em;text-decoration:none;opacity:0;transform:translateY(40px);transition:transform .7s var(--ease),opacity .7s var(--ease)}
+.menu.on{opacity:1;pointer-events:auto}
+.menu.on a{opacity:1;transform:none}
+.menu.on a:nth-child(2){transition-delay:.06s}.menu.on a:nth-child(3){transition-delay:.12s}.menu.on a:nth-child(4){transition-delay:.18s}
+@media (max-width:860px){.nav .links{display:none}.burger{display:block}.nav{padding-left:18px}}
+
+/* ---------- pulsanti: pillola con freccia nel cerchio ---------- */
+.cta{display:inline-flex;align-items:center;gap:14px;border:0;border-radius:999px;padding:8px 8px 8px 24px;min-height:56px;font-weight:700;font-size:16px;text-decoration:none;background:var(--ctaBg);color:var(--ctaInk);transition:transform .4s var(--ease),background .6s var(--ease),color .6s var(--ease)}
+.cta i{width:40px;height:40px;border-radius:999px;display:grid;place-items:center;background:var(--ctaDot);transition:transform .5s var(--ease)}
+.cta:hover i{transform:translate(3px,-2px) scale(1.06)}
+.cta:active{transform:scale(.97)}
+.cta.full{width:100%;justify-content:space-between}
+.cta.ghost{background:transparent;box-shadow:inset 0 0 0 1.5px currentColor;color:inherit}
+.cta.ghost i{background:var(--ghostDot,rgba(127,127,127,.18))}
+
+/* ---------- doppia cornice ---------- */
+.shell{padding:6px;border-radius:32px;background:var(--shellBg);box-shadow:0 0 0 1px var(--shellLine)}
+.core{border-radius:26px;background:var(--coreBg);box-shadow:inset 0 1px 1px rgba(255,255,255,.12)}
+
+/* ---------- campioni, taglie ---------- */
+.sw{width:38px;height:38px;border-radius:50%;border:0;background:var(--c);box-shadow:0 0 0 1px rgba(0,0,0,.08);transition:transform .4s var(--spring),box-shadow .3s var(--ease)}
+.sw[aria-pressed=true]{box-shadow:0 0 0 3px var(--swGap,#fff),0 0 0 5px var(--swRing,#111)}
+.sw:hover{transform:scale(1.12)}
+.szs,.sws{display:flex;flex-wrap:wrap;gap:8px}
+.sz{min-width:76px;height:46px;padding:0 18px;border-radius:999px;border:0;background:var(--szBg,rgba(127,127,127,.12));font-weight:700;transition:background .3s var(--ease),color .3s var(--ease)}
+.sz[aria-pressed=true]{background:var(--szOn,#111);color:var(--szOnInk,#fff)}
+.lab{font-size:14px;font-weight:600;margin:0 0 10px;opacity:.75}
+.lab b{opacity:1}
+
+/* ---------- prodotto che galleggia e si inclina ---------- */
+.stage{perspective:1000px}
+.tilt{transition:transform .8s var(--ease);transform-style:preserve-3d;will-change:transform}
+.float{animation:float 6s ease-in-out infinite}
+@keyframes float{50%{translate:0 -14px}}
+.pimg{transition:opacity .3s var(--ease),filter .3s var(--ease)}
+.pimg.swap{opacity:0;filter:blur(8px)}
+
+/* ---------- scorrimento ---------- */
+.mq{overflow:hidden;white-space:nowrap}
+.mq div{display:inline-flex;align-items:center;gap:40px;padding-right:40px;animation:mq 32s linear infinite}
+.mq.rev div{animation-direction:reverse}
+@keyframes mq{to{transform:translateX(-50%)}}
+.dot{width:14px;height:14px;border-radius:50%;background:currentColor;flex:none}
+@supports (animation-timeline:view()){
+  .rv{animation:rv both var(--ease);animation-timeline:view();animation-range:entry 5% entry 70%}
+  @keyframes rv{from{opacity:0;transform:translateY(56px) scale(.98);filter:blur(6px)}}
+}
+
+/* ---------- video verticali (segnaposto) ---------- */
+.vid{position:relative;aspect-ratio:9/16;border-radius:24px;overflow:hidden;background:var(--vidBg);display:flex;align-items:flex-end;isolation:isolate}
+.vid img{position:absolute;inset:10% 12% auto;width:76%;transform:rotate(-6deg);transition:transform .9s var(--ease)}
+.vid:hover img{transform:rotate(-2deg) scale(1.06)}
+.vid .cap{position:relative;padding:16px;font-size:14px;line-height:1.35;font-weight:600}
+.vid .play{position:absolute;top:14px;left:14px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.9);display:grid;place-items:center;color:#111;box-shadow:0 8px 20px -8px rgba(0,0,0,.4)}
+.vid .bar{position:absolute;top:8px;left:12px;right:12px;height:3px;border-radius:3px;background:rgba(255,255,255,.3);overflow:hidden}
+.vid .bar::after{content:"";position:absolute;inset:0;background:#fff;transform-origin:left;animation:prog 6s linear infinite}
+@keyframes prog{from{transform:scaleX(0)}}
+
+/* ---------- domande ---------- */
+.faqL details{border-radius:22px;background:var(--faqBg);margin-bottom:8px;transition:background .3s var(--ease)}
+.faqL summary{list-style:none;cursor:pointer;padding:22px 24px;font-weight:700;font-size:18px;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.faqL summary::-webkit-details-marker{display:none}
+.faqL summary i{width:34px;height:34px;flex:none;border-radius:50%;display:grid;place-items:center;background:var(--faqDot);transition:transform .5s var(--ease)}
+.faqL details[open] summary i{transform:rotate(45deg)}
+.faqL details p{margin:0;padding:0 24px 24px;font-size:16px;line-height:1.6;max-width:60ch}
+
+/* ---------- coppia ---------- */
+.pair{display:grid;grid-template-columns:1fr auto 1fr auto auto;gap:clamp(16px,3vw,36px);align-items:center}
+.pair .slot{display:grid;grid-template-columns:110px 1fr;gap:18px;align-items:center;min-width:0}
+.pair .slot img{width:100%;transition:opacity .3s var(--ease)}
+.pair .slot .sws{margin-bottom:10px}
+.pair .slot .sw{width:30px;height:30px}
+.pair .slot .sz{min-width:58px;height:38px;font-size:14px}
+.pair .op{font-size:44px;font-weight:300;opacity:.5}
+.pair .tot b{display:block;font-size:52px;line-height:1;letter-spacing:-.03em;margin-bottom:6px}
+.pair .tot s{opacity:.6}
+.pair .tot .cta{margin-top:18px}
+@media (max-width:1000px){.pair{grid-template-columns:1fr}.pair .op{display:none}}
+
+/* ---------- barra telefono, avviso, piè di pagina ---------- */
+.mbar{position:fixed;z-index:35;left:12px;right:12px;bottom:calc(76px + env(safe-area-inset-bottom,0px));display:none;align-items:center;justify-content:space-between;gap:12px;padding:8px 8px 8px 20px;border-radius:999px;background:var(--navBg);color:var(--navInk);box-shadow:0 0 0 1px var(--navLine),0 16px 40px -12px rgba(0,0,0,.45);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);transform:translateY(140%);transition:transform .6s var(--ease)}
+.mbar .cta{min-height:46px;padding-left:18px;font-size:15px}.mbar .cta i{width:32px;height:32px}
+.mbar.on{transform:none}
+@media (max-width:860px){.mbar{display:flex}}
+.toast{position:fixed;left:50%;top:calc(80px + env(safe-area-inset-top,0px));transform:translate(-50%,-30px);opacity:0;background:#111;color:#fff;padding:14px 22px;border-radius:999px;font:600 15px/1.3 "Familjen Grotesk",sans-serif;z-index:60;transition:all .5s var(--ease);max-width:calc(100% - 32px);box-shadow:0 16px 40px -12px rgba(0,0,0,.5)}
+.toast.show{transform:translate(-50%,0);opacity:1}
+.pay{display:flex;flex-wrap:wrap;gap:6px}
+.pay span{padding:7px 12px;border-radius:999px;font:700 12px/1 "Familjen Grotesk",sans-serif;background:var(--payBg);color:var(--payInk)}
+.fcols{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.fcols h3{margin:0 0 12px;font-size:14px;opacity:.6;font-weight:600}
+.fcols ul{list-style:none;margin:0;padding:0;line-height:2.1;font-size:15px;font-weight:600}
+.fcols a{text-decoration:none}.fcols a:hover{text-decoration:underline;text-underline-offset:4px}
+.legal{font-size:13px;line-height:1.6;opacity:.75;margin:0}
+@media (max-width:760px){.fcols{grid-template-columns:1fr 1fr}}
+
+/* ---------- barra prototipo ---------- */
+#proto{position:fixed;left:50%;bottom:calc(14px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:70;display:flex;align-items:center;gap:4px;background:#ff3d00;color:#fff;padding:5px;border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,.35);font:600 14px/1 "Familjen Grotesk",sans-serif}
+#proto button{width:40px;height:40px;border-radius:50%;border:0;background:rgba(0,0,0,.2);color:#fff;font-size:18px}
+#proto .lb{padding:0 10px;white-space:nowrap}
+#notes{position:fixed;right:16px;bottom:80px;width:min(380px,calc(100% - 32px));max-height:60vh;overflow:auto;background:#111;color:#eee;padding:18px 20px;border-radius:20px;z-index:69;font:14px/1.5 "Familjen Grotesk",sans-serif;display:none}
+#notes.on{display:block}#notes h3{margin:0 0 8px;font-size:15px}#notes ul{margin:0;padding-left:18px}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+
+/* =========================================================
+   A · MONUMENTO
+   ========================================================= */
+.vA{--display:"Archivo",sans-serif;--bg:#f4f4f1;--ink:#0b0b0b;--card:#fff;--soft:#e9e9e5;--pick:#151515;
+ --navBg:rgba(255,255,255,.72);--navInk:#0b0b0b;--navInv:#fff;--navLine:rgba(0,0,0,.07);--navHover:rgba(0,0,0,.05);--menuBg:rgba(244,244,241,.85);
+ --ctaBg:#0b0b0b;--ctaInk:#fff;--ctaDot:rgba(255,255,255,.14);--shellBg:rgba(0,0,0,.04);--shellLine:rgba(0,0,0,.06);--coreBg:#fff;
+ --vidBg:#e2e2dd;--faqBg:#fff;--faqDot:#f0f0ec;--payBg:#fff;--payInk:#111;
+ font-family:"Archivo",sans-serif;background:var(--bg);color:var(--ink)}
+.vA .hero{padding-top:110px}
+.vA .hero h1{margin:0}
+.vA .hero .logo{width:100%}
+.vA .row6{display:grid;grid-template-columns:repeat(6,1fr);gap:clamp(4px,1vw,16px);margin-top:-9vw;position:relative}
+.vA .row6 button{background:none;border:0;padding:0;position:relative;transition:transform .7s var(--spring)}
+.vA .row6 button:hover{transform:translateY(-18px) rotate(-3deg)}
+.vA .row6 button span{position:absolute;left:50%;bottom:-6px;transform:translate(-50%,10px);opacity:0;background:var(--ink);color:#fff;font-size:13px;font-weight:700;padding:7px 12px;border-radius:999px;transition:all .45s var(--ease);white-space:nowrap}
+.vA .row6 button:hover span{opacity:1;transform:translate(-50%,0)}
+.vA .intro{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;padding-block:32px 96px}
+.vA .intro h2{font-size:clamp(36px,4.6vw,68px);line-height:.96;letter-spacing:-.035em;font-weight:800;font-stretch:115%;margin:0;max-width:13ch;text-wrap:balance}
+.vA .intro .side{max-width:420px;display:grid;gap:20px}
+.vA .intro p{font-size:18px;line-height:1.5;margin:0}
+.vA .band{background:var(--ink);color:var(--bg);padding-block:26px;font:900 clamp(34px,4vw,60px)/1 "Archivo";font-stretch:125%;letter-spacing:-.02em}
+.vA .bento{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:minmax(150px,auto);gap:14px;padding-block:120px}
+.vA .b-stage{grid-column:span 7;grid-row:span 3;border-radius:32px;background:var(--soft);position:relative;overflow:hidden;display:grid;place-items:center;min-height:620px}
+.vA .b-stage .stripe{position:absolute;top:0;bottom:0;right:14%;width:28px;background:var(--pick);transition:background .6s var(--ease)}
+.vA .b-stage .ghost{position:absolute;left:24px;bottom:12px;font:900 clamp(60px,9vw,150px)/.8 "Archivo";font-stretch:125%;letter-spacing:-.04em;color:transparent;-webkit-text-stroke:1.5px rgba(0,0,0,.18);text-transform:uppercase}
+.vA .b-stage .tilt{width:min(52%,380px)}
+.vA .b-buy{grid-column:span 5;grid-row:span 3}
+.vA .b-buy .core{padding:clamp(24px,3vw,40px);height:100%;display:flex;flex-direction:column;gap:22px}
+.vA .b-buy h2{font-size:clamp(36px,3.4vw,54px);font-weight:800;font-stretch:118%;letter-spacing:-.035em;margin:0;line-height:.95}
+.vA .b-buy .price{font-size:28px;font-weight:800;margin:6px 0 0;display:flex;gap:12px;align-items:baseline}
+.vA .b-buy .price small{font-size:15px;font-weight:600;opacity:.6}
+.vA .b-buy .note{font-size:14px;line-height:1.5;margin:0;opacity:.75}
+.vA .b-pair{grid-column:span 4;border-radius:32px;background:var(--ink);color:#fff;padding:28px;display:flex;flex-direction:column;justify-content:space-between;text-decoration:none;position:relative;overflow:hidden;min-height:260px}
+.vA .b-pair b{font:900 54px/.9 "Archivo";font-stretch:122%;letter-spacing:-.04em;position:relative}
+.vA .b-pair .duo{position:absolute;right:-10px;bottom:-30px;display:flex;width:62%;transition:transform .8s var(--ease)}
+.vA .b-pair:hover .duo{transform:translateY(-12px) rotate(-3deg)}
+.vA .b-pair .duo img{width:50%}.vA .b-pair .duo img+img{margin-left:-14%;transform:rotate(8deg)}
+.vA .b-pair span{font-size:15px;font-weight:600;position:relative;max-width:16ch}
+.vA .b-det{grid-column:span 4;border-radius:32px;overflow:hidden;position:relative;min-height:260px;background:#ddd url(img/det-vita.jpg) center/cover}
+.vA .b-det span{position:absolute;left:16px;bottom:16px;background:rgba(255,255,255,.88);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);padding:10px 16px;border-radius:999px;font-weight:700;font-size:14px}
+.vA .b-spec{grid-column:span 4;border-radius:32px;background:var(--card);padding:28px;display:grid;gap:14px;align-content:center}
+.vA .b-spec div{display:flex;justify-content:space-between;gap:12px;font-size:16px;padding-block:6px}
+.vA .b-spec div b{font-weight:800;text-align:right}
+.vA .pairS{padding-block:0 120px}
+.vA .pairS .shell{--shellBg:#1d1d1b;--shellLine:rgba(255,255,255,.06);--coreBg:#0b0b0b}
+.vA .pairS .core{color:#fff;padding:clamp(28px,5vw,72px);--swGap:#0b0b0b;--swRing:#fff;--szOn:#fff;--szOnInk:#0b0b0b;--szBg:rgba(255,255,255,.1);--ctaBg:#fff;--ctaInk:#0b0b0b;--ctaDot:rgba(0,0,0,.08)}
+.vA .pairS h2{font:900 clamp(48px,7vw,120px)/.9 "Archivo";font-stretch:125%;letter-spacing:-.04em;margin:0 0 16px}
+.vA .pairS .core>p{font-size:18px;line-height:1.5;margin:0 0 48px;max-width:46ch;opacity:.8}
+.vA .story{display:grid;grid-template-columns:28px 1.1fr 1fr;gap:clamp(24px,4vw,64px);padding-block:40px 140px}
+.vA .story .bar{background:var(--pick);border-radius:999px;transition:background .6s var(--ease)}
+.vA .story blockquote{margin:0;font:800 clamp(30px,3.2vw,48px)/1.02 "Archivo";font-stretch:112%;letter-spacing:-.03em;text-wrap:balance}
+.vA .story p{font-size:18px;line-height:1.6;margin:0 0 16px}
+.vA .social{padding-block:0 140px}
+.vA h2.sec{font:800 clamp(38px,4.4vw,68px)/.95 "Archivo";font-stretch:118%;letter-spacing:-.035em;margin:0 0 32px}
+.vA .vids{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.vA .vids .vid:nth-child(even){transform:translateY(48px)}
+.vA .follow{display:flex;gap:10px;flex-wrap:wrap;margin-top:88px}
+.vA .faq{display:grid;grid-template-columns:1fr 1.5fr;gap:40px;padding-block:0 140px}
+.vA footer{background:var(--card);border-radius:40px 40px 0 0;padding-block:72px 120px;display:grid;gap:40px}
+.vA footer .logo{width:100%}
+@media (max-width:860px){
+ .vA .bento{grid-template-columns:1fr;padding-block:72px}
+ .vA .bento>*{grid-column:auto!important;grid-row:auto!important}
+ .vA .b-stage{min-height:440px}
+ .vA .story{grid-template-columns:14px 1fr}.vA .story>div:last-child{grid-column:2}
+ .vA .vids{grid-template-columns:repeat(2,1fr)}.vA .vids .vid:nth-child(even){transform:translateY(32px)}
+ .vA .faq{grid-template-columns:1fr}
+}
+
+/* =========================================================
+   B · CAMPO COLORE
+   ========================================================= */
+.vB{--display:"Bricolage Grotesque",sans-serif;--field:#6a2fa3;--fink:#fff;--bg:#f3f3f0;--ink:#121212;
+ --navBg:rgba(18,18,18,.5);--navInk:#fff;--navInv:#121212;--navLine:rgba(255,255,255,.14);--navHover:rgba(255,255,255,.12);--menuBg:rgba(0,0,0,.6);
+ --ctaBg:var(--fink);--ctaInk:var(--field);--ctaDot:rgba(127,127,127,.18);--vidBg:#e3e3df;--faqBg:#fff;--faqDot:#efefeb;--payBg:rgba(255,255,255,.9);--payInk:#121212;
+ font-family:"Bricolage Grotesque",sans-serif;background:var(--bg);color:var(--ink)}
+.vB .heroB{position:relative;min-height:100svh;background:var(--field);color:var(--fink);overflow:hidden;isolation:isolate;transition:color .6s var(--ease)}
+.vB .wipe{position:absolute;inset:0;z-index:0;pointer-events:none}
+.vB .heroB .mq{position:absolute;left:0;right:0;top:48%;transform:translateY(-50%);z-index:1;font:800 clamp(120px,22vw,340px)/1 "Bricolage Grotesque";letter-spacing:-.05em;color:transparent;-webkit-text-stroke:1.5px color-mix(in srgb,var(--fink) 35%,transparent)}
+.vB .heroB .mq div{animation-duration:48s}
+.vB .heroIn{position:relative;z-index:2;min-height:100svh;display:grid;grid-template-columns:minmax(0,440px) 1fr;align-items:end;gap:24px;padding-block:110px 40px}
+.vB .obj{position:absolute;z-index:2;right:4vw;top:50%;width:min(40vw,560px);transform:translateY(-46%)}
+.vB .obj .tilt img{filter:drop-shadow(0 50px 50px rgba(0,0,0,.3))}
+.vB .card{--shellBg:color-mix(in srgb,var(--fink) 14%,transparent);--shellLine:color-mix(in srgb,var(--fink) 22%,transparent);--coreBg:color-mix(in srgb,var(--field) 82%,#000 6%);transition:none}
+.vB .card .core{padding:28px;display:grid;gap:18px;color:var(--fink);transition:background .6s var(--ease);--swGap:var(--field);--swRing:var(--fink);--szBg:color-mix(in srgb,var(--fink) 14%,transparent);--szOn:var(--fink);--szOnInk:var(--field)}
+.vB h1{font-size:clamp(64px,8.4vw,136px);line-height:.84;letter-spacing:-.045em;font-weight:800;margin:0 0 4px}
+.vB .lead{font-size:18px;line-height:1.45;margin:0}
+.vB .price{font-size:30px;font-weight:800;margin:0;display:flex;gap:12px;align-items:baseline}
+.vB .price small{font-size:15px;font-weight:600;opacity:.75}
+.vB .sw{width:42px;height:42px}
+.vB .det{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding-block:140px}
+.vB .det h2.sec{grid-column:1/-1}
+.vB .det article{position:relative;aspect-ratio:4/5;border-radius:32px;overflow:hidden;background:#ddd var(--img) center/cover;display:flex;align-items:flex-end;color:#fff}
+.vB .det article:nth-of-type(2){transform:translateY(64px)}
+.vB .det article::before{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(transparent,rgba(0,0,0,.7))}
+.vB .det article div{position:relative;padding:28px}
+.vB .det article h3{font-size:clamp(26px,2.4vw,36px);letter-spacing:-.03em;line-height:1;margin:0 0 8px}
+.vB .det article p{margin:0;font-size:16px;line-height:1.45;max-width:32ch}
+.vB h2.sec{font-size:clamp(40px,5vw,84px);letter-spacing:-.04em;line-height:.92;margin:0 0 40px;font-weight:800}
+.vB .pairS{padding-block:0 140px}
+.vB .pairS .shell{--shellBg:#e6e6e1;--shellLine:rgba(0,0,0,.05);--coreBg:#121212}
+.vB .pairS .core{color:#fff;padding:clamp(28px,5vw,72px);--swGap:#121212;--swRing:#fff;--szOn:#fff;--szOnInk:#121212;--szBg:rgba(255,255,255,.1);--ctaBg:#fff;--ctaInk:#121212}
+.vB .pairS .core>p{font-size:18px;line-height:1.5;margin:-20px 0 44px;max-width:44ch;opacity:.8}
+.vB .story{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,80px);padding-block:0 140px}
+.vB .story p{font-size:18px;line-height:1.6;margin:0 0 18px}
+.vB .soc{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px;--ctaBg:#121212;--ctaInk:#fff;--ctaDot:rgba(255,255,255,.14)}
+.vB .faq{display:grid;grid-template-columns:1fr 1.5fr;gap:40px;padding-block:0 140px}
+.vB footer{background:var(--field);color:var(--fink);border-radius:40px 40px 0 0;padding-block:80px 120px;display:grid;gap:40px;transition:background .6s var(--ease),color .6s var(--ease)}
+.vB footer .big{font-size:clamp(48px,7vw,120px);letter-spacing:-.045em;line-height:.9;font-weight:800;margin:0}
+@media (max-width:860px){
+ .vB .heroIn{display:flex;flex-direction:column;justify-content:flex-end;padding-top:96px}
+ .vB .obj{position:relative;right:auto;top:auto;transform:none;width:52%;margin:0 auto -30px}
+ .vB .det{grid-template-columns:1fr;padding-block:88px}.vB .det article:nth-of-type(2){transform:none}
+ .vB .story,.vB .faq{grid-template-columns:1fr}
+}
+
+/* =========================================================
+   C · CREW
+   ========================================================= */
+.vC{--display:"Big Shoulders Display",sans-serif;--bg:#080808;--ink:#f3f3f1;--acc:#a46bff;
+ --navBg:rgba(20,20,20,.6);--navInk:#f3f3f1;--navInv:#080808;--navLine:rgba(255,255,255,.09);--navHover:rgba(255,255,255,.07);--menuBg:rgba(8,8,8,.8);
+ --ctaBg:var(--acc);--ctaInk:#0b0b0b;--ctaDot:rgba(0,0,0,.14);--shellBg:rgba(255,255,255,.04);--shellLine:rgba(255,255,255,.08);--coreBg:#121212;
+ --vidBg:#161616;--faqBg:rgba(255,255,255,.05);--faqDot:rgba(255,255,255,.08);--payBg:rgba(255,255,255,.08);--payInk:#f3f3f1;
+ --swGap:#121212;--swRing:#fff;--szOn:#f3f3f1;--szOnInk:#080808;--szBg:rgba(255,255,255,.08);--sel:#a46bff;--selInk:#080808;
+ font-family:"Familjen Grotesk",sans-serif;background:var(--bg);color:var(--ink);position:relative}
+.vC::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(40vw 40vw at 85% 10%,rgba(164,107,255,.22),transparent 70%),radial-gradient(36vw 36vw at 0% 70%,rgba(31,74,50,.35),transparent 70%)}
+.vC>section,.vC>footer{position:relative;z-index:1}
+.vC .disp{font-family:"Big Shoulders Display",sans-serif;text-transform:uppercase;font-weight:900;letter-spacing:-.01em}
+.vC .hero{display:grid;grid-template-columns:1.5fr 1fr;gap:clamp(24px,4vw,64px);align-items:center;padding-block:140px 120px}
+.vC h1{font-size:clamp(46px,5.6vw,100px);line-height:.86;margin:0 0 28px}
+.vC h1 span{display:block;color:var(--acc)}
+.vC .hero p{font-size:19px;line-height:1.5;margin:0 0 32px;max-width:40ch;color:#cfcfcb}
+.vC .ctas{display:flex;gap:10px;flex-wrap:wrap}
+.vC .fan{position:relative;height:clamp(420px,46vw,620px)}
+.vC .fan .ph{position:absolute;width:56%;top:50%;left:50%;transition:transform 1s var(--ease)}
+.vC .fan .ph .core{padding:0;overflow:hidden;border-radius:30px}
+.vC .fan .ph .vid{border-radius:30px}
+.vC .fan .ph:nth-child(1){transform:translate(-110%,-46%) rotate(-10deg) scale(.86)}
+.vC .fan .ph:nth-child(2){transform:translate(-50%,-50%);z-index:2}
+.vC .fan .ph:nth-child(3){transform:translate(10%,-44%) rotate(10deg) scale(.86)}
+.vC .fan:hover .ph:nth-child(1){transform:translate(-122%,-46%) rotate(-14deg) scale(.86)}
+.vC .fan:hover .ph:nth-child(3){transform:translate(22%,-44%) rotate(14deg) scale(.86)}
+.vC h2{font-size:clamp(46px,5.6vw,100px);line-height:.88;margin:0 0 32px}
+.vC .rail{padding-block:0 140px}
+.vC .track{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding-inline:clamp(16px,3vw,40px);padding-bottom:8px;scrollbar-width:none}
+.vC .track::-webkit-scrollbar{display:none}
+.vC .card{flex:0 0 clamp(250px,24vw,340px);scroll-snap-align:start;aspect-ratio:3/4;background:var(--c);border:0;border-radius:28px;padding:22px;display:flex;flex-direction:column;justify-content:space-between;text-align:left;color:#fff;position:relative;overflow:hidden;transition:transform .7s var(--spring)}
+.vC .card.light{color:#111}
+.vC .card:hover{transform:translateY(-10px)}
+.vC .card img{position:absolute;width:72%;left:14%;top:12%;transform:rotate(-5deg);transition:transform 1s var(--ease)}
+.vC .card:hover img{transform:rotate(0) scale(1.08)}
+.vC .card b{position:relative;font:900 46px/.9 "Big Shoulders Display";text-transform:uppercase}
+.vC .card small{position:relative;font-size:15px;font-weight:600;display:flex;justify-content:space-between;align-items:center}
+.vC .card small i{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.2);display:grid;place-items:center}
+.vC .buy{display:grid;grid-template-columns:1.1fr 1fr;gap:16px;padding-block:0 140px;align-items:stretch}
+.vC .buy .pic{border-radius:32px;background:rgba(255,255,255,.04);box-shadow:0 0 0 1px rgba(255,255,255,.07);display:grid;place-items:center;min-height:560px;overflow:hidden}
+.vC .buy .pic .tilt{width:min(58%,400px)}
+.vC .buy .core{padding:clamp(24px,3vw,44px);display:grid;gap:22px;height:100%}
+.vC .buy .price{font-size:32px;font-weight:700;margin:0}
+.vC .buy .hint{font-size:15px;margin:-14px 0 0;color:#bdbdb8}
+.vC .perks{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.vC .perks div{background:rgba(255,255,255,.05);border-radius:18px;padding:16px;font-size:14px;line-height:1.4;color:#cfcfcb}
+.vC .perks b{display:block;font-size:16px;color:var(--ink)}
+.vC .wall{padding-block:0 140px}
+.vC .wallGrid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.vC .wallGrid .vid:nth-child(even){transform:translateY(44px)}
+.vC .follow{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:100px}
+.vC .follow a{border-radius:28px;background:rgba(255,255,255,.05);box-shadow:0 0 0 1px rgba(255,255,255,.07);padding:26px 26px 26px 30px;text-decoration:none;display:flex;justify-content:space-between;align-items:center;font:800 42px/1 "Big Shoulders Display";text-transform:uppercase;transition:background .4s var(--ease),color .4s var(--ease)}
+.vC .follow a i{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.08);transition:transform .5s var(--ease)}
+.vC .follow a:hover{background:var(--acc);color:#0b0b0b}
+.vC .follow a:hover i{transform:rotate(45deg)}
+.vC .pairS{padding-block:0 140px}
+.vC .pairS .shell{--shellBg:rgba(255,255,255,.06);--coreBg:#f3f3f1}
+.vC .pairS .core{color:#0b0b0b;padding:clamp(28px,5vw,72px);--swGap:#f3f3f1;--swRing:#0b0b0b;--szOn:#0b0b0b;--szOnInk:#f3f3f1;--szBg:rgba(0,0,0,.07);--ctaBg:#0b0b0b;--ctaInk:#f3f3f1;--ctaDot:rgba(255,255,255,.14)}
+.vC .pairS .core>p{font-size:18px;line-height:1.5;margin:-16px 0 44px;max-width:44ch;opacity:.75}
+.vC .faq{display:grid;grid-template-columns:1fr 1.5fr;gap:40px;padding-block:0 140px}
+.vC footer{background:#000;border-radius:40px 40px 0 0;padding-block:72px 120px;display:grid;gap:40px;box-shadow:0 0 0 1px rgba(255,255,255,.06)}
+.vC footer .logo{height:40px;width:auto}
+@media (max-width:860px){
+ .vC .hero,.vC .buy,.vC .faq{grid-template-columns:1fr}
+ .vC .hero{padding-top:110px}
+ .vC h1{font-size:9.6vw}
+ .vC .fan{height:110vw}
+ .vC .buy .pic{min-height:380px}
+ .vC .wallGrid{grid-template-columns:repeat(2,1fr)}.vC .wallGrid .vid:nth-child(n+5){display:none}
+ .vC .follow{grid-template-columns:1fr}
+}
+
+/* =========================================================
+   D · FLYER
+   ========================================================= */
+.vD{--display:"Anton",sans-serif;--bg:#5d2a92;--ink:#f3f1ec;--k:#111;--lime:#d7ff3a;--red:#ff4a3d;
+ --navBg:rgba(17,17,17,.55);--navInk:#f3f1ec;--navInv:#111;--navLine:rgba(255,255,255,.12);--navHover:rgba(255,255,255,.1);--menuBg:rgba(93,42,146,.85);
+ --ctaBg:var(--lime);--ctaInk:#111;--ctaDot:rgba(0,0,0,.1);--faqBg:rgba(0,0,0,.2);--faqDot:rgba(255,255,255,.1);--payBg:#111;--payInk:var(--lime);
+ --sel:#d7ff3a;--selInk:#111;
+ font-family:"Archivo",sans-serif;background:var(--bg);color:var(--ink)}
+.vD .anton{font-family:"Anton",sans-serif;text-transform:uppercase;font-weight:400}
+.vD .poster{position:relative;min-height:100svh;padding-block:110px 64px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
+.vD .pres{font-weight:700;font-size:clamp(16px,1.4vw,20px);margin:0 0 6px}
+.vD h1{margin:0;font-size:clamp(88px,18vw,320px);line-height:.8;letter-spacing:-.005em;position:relative}
+.vD h1 .l1{display:block;position:relative;z-index:1}
+.vD h1 .l2{display:block;position:relative;z-index:3;color:transparent;-webkit-text-stroke:2px var(--ink)}
+.vD .poster .pantW{position:absolute;z-index:2;right:clamp(16px,10vw,200px);top:12%;width:clamp(240px,30vw,500px)}
+.vD .poster .pantW .tilt img{transform:rotate(14deg);filter:drop-shadow(0 40px 40px rgba(0,0,0,.35))}
+.vD .stk{position:absolute;z-index:4;display:grid;place-items:center;text-align:center;font-family:"Anton";text-transform:uppercase;line-height:.95;color:var(--k);box-shadow:0 14px 30px -10px rgba(0,0,0,.4);transition:transform .6s var(--spring)}
+.vD .stk:hover{transform:rotate(0) scale(1.08)!important}
+.vD .s1{background:var(--lime);width:clamp(120px,12vw,180px);aspect-ratio:1;border-radius:50%;font-size:clamp(30px,3.2vw,50px);right:clamp(200px,34vw,580px);top:clamp(380px,36vw,540px);transform:rotate(-12deg)}
+.vD .s2{background:var(--ink);padding:14px 20px;border-radius:999px;font-size:clamp(20px,1.8vw,28px);right:clamp(16px,4vw,60px);top:clamp(520px,40vw,640px);transform:rotate(6deg)}
+.vD .s3{background:var(--red);color:#fff;padding:10px 18px;border-radius:999px;font-size:clamp(16px,1.4vw,22px);right:clamp(260px,26vw,420px);top:150px;transform:rotate(-6deg)}
+.vD .info{position:relative;z-index:4;display:flex;gap:16px 28px;flex-wrap:wrap;align-items:center;font-weight:700;font-size:18px}
+.vD .ticket{display:grid;grid-template-columns:1fr 260px;margin-bottom:140px;color:var(--k);filter:drop-shadow(0 30px 40px rgba(0,0,0,.25))}
+.vD .ticket .main{background:var(--ink);border-radius:32px 0 0 32px;padding:clamp(24px,3vw,48px);display:grid;grid-template-columns:minmax(0,260px) 1fr;gap:36px;align-items:center;-webkit-mask:radial-gradient(circle 18px at 100% 0,#0000 98%,#000) top/100% 51% no-repeat,radial-gradient(circle 18px at 100% 100%,#0000 98%,#000) bottom/100% 51% no-repeat;mask:radial-gradient(circle 18px at 100% 0,#0000 98%,#000) top/100% 51% no-repeat,radial-gradient(circle 18px at 100% 100%,#0000 98%,#000) bottom/100% 51% no-repeat;--swGap:var(--ink);--swRing:#111;--szOn:#111;--szOnInk:var(--ink);--szBg:rgba(0,0,0,.07);--ctaBg:#111;--ctaInk:var(--lime);--ctaDot:rgba(255,255,255,.12)}
+.vD .ticket .main .tilt img{transform:rotate(-6deg)}
+.vD .ticket h2{font-size:clamp(44px,5vw,84px);line-height:.9;margin:0 0 6px}
+.vD .ticket .price{font-family:"Anton";font-size:46px;margin:0}
+.vD .ticket .main>div:last-child{display:grid;gap:18px}
+.vD .stub{background:var(--lime);border-radius:0 32px 32px 0;padding:32px 26px;display:flex;flex-direction:column;justify-content:space-between;gap:24px;background-image:radial-gradient(circle 4px,#5d2a92 98%,#0000);background-position:left;background-size:14px 22px;background-repeat:repeat-y;-webkit-mask:radial-gradient(circle 18px at 0 0,#0000 98%,#000) top/100% 51% no-repeat,radial-gradient(circle 18px at 0 100%,#0000 98%,#000) bottom/100% 51% no-repeat;mask:radial-gradient(circle 18px at 0 0,#0000 98%,#000) top/100% 51% no-repeat,radial-gradient(circle 18px at 0 100%,#0000 98%,#000) bottom/100% 51% no-repeat}
+.vD .stub b{font-family:"Anton";font-size:42px;text-transform:uppercase;line-height:.95;padding-left:12px}
+.vD .stub span{font-weight:700;font-size:15px;line-height:1.45;padding-left:12px}
+.vD .lineup{position:relative;padding-block:0 140px}
+.vD .lineup h2,.vD h2.sec{font-size:clamp(44px,5.4vw,96px);margin:0 0 28px;line-height:.9}
+.vD .lineup ol{list-style:none;margin:0;padding:0}
+.vD .lineup button{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;background:none;border:0;padding:4px 0;text-align:left;color:var(--ink)}
+.vD .lineup button .anton{font-size:clamp(56px,10vw,170px);line-height:.95;transition:transform .6s var(--ease),color .3s var(--ease)}
+.vD .lineup button small{font-weight:700;font-size:15px;opacity:0;transition:opacity .3s var(--ease)}
+.vD .lineup button:hover .anton,.vD .lineup button[aria-pressed=true] .anton{transform:translateX(28px);color:var(--lime)}
+.vD .lineup button:hover small,.vD .lineup button[aria-pressed=true] small{opacity:1}
+.vD .follower{position:absolute;left:62%;top:140px;width:clamp(220px,24vw,340px);pointer-events:none;z-index:3;opacity:1;transition:opacity .3s var(--ease),transform .5s var(--ease);filter:drop-shadow(0 30px 30px rgba(0,0,0,.35))}
+.vD .follower img{transform:rotate(-10deg)}
+.vD .pairS{padding-block:0 140px}
+.vD .pairS .shell{--shellBg:rgba(0,0,0,.18);--shellLine:rgba(255,255,255,.08);--coreBg:#111}
+.vD .pairS .core{padding:clamp(28px,5vw,72px);--swGap:#111;--swRing:var(--ink);--szOn:var(--ink);--szOnInk:#111;--szBg:rgba(255,255,255,.1)}
+.vD .pairS h2{font-size:clamp(56px,8vw,140px);line-height:.85;margin:0 0 14px}
+.vD .pairS .core>p{font-size:18px;line-height:1.5;margin:0 0 44px;max-width:44ch;opacity:.8}
+.vD .mani{display:grid;grid-template-columns:1.4fr 1fr;gap:clamp(24px,5vw,80px);padding-block:120px;background:#1f4a32;border-radius:40px;margin-inline:clamp(16px,3vw,40px);margin-bottom:140px}
+.vD .mani h2{font-size:clamp(42px,5vw,88px);line-height:.9;margin:0}
+.vD .mani p{font-size:18px;line-height:1.6;margin:0 0 18px}
+.vD .soc{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.vD .faq{display:grid;grid-template-columns:1fr 1.5fr;gap:40px;padding-block:0 140px}
+.vD footer{background:var(--lime);color:var(--k);border-radius:40px 40px 0 0;padding-block:72px 120px;display:grid;gap:40px}
+.vD footer .logo{width:100%}
+@media (max-width:860px){
+ .vD .poster{min-height:auto;padding-bottom:40px}
+ .vD .poster .pantW{position:relative;right:auto;top:auto;width:64%;margin:-60px 0 0 auto}
+ .vD .s1{right:auto;left:16px;top:auto;bottom:150px}.vD .s2,.vD .s3{display:none}
+ .vD .ticket{grid-template-columns:1fr}
+ .vD .ticket .main{grid-template-columns:1fr;border-radius:32px 32px 0 0;-webkit-mask:none;mask:none}
+ .vD .ticket .main .tilt{width:60%;margin:auto}
+ .vD .stub{border-radius:0 0 32px 32px;-webkit-mask:none;mask:none;background-position:top;background-size:22px 14px;background-repeat:repeat-x}
+ .vD .mani,.vD .faq{grid-template-columns:1fr}
+ .vD .follower{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ===================== A · MONUMENTO ===================== -->
+<div class="v vA" data-v="A" data-name="Monumento">
+  <div data-nav="Studio Flow:#A-buy|La coppia:#A-pair|Chi siamo:#A-story|Domande:#A-faq"></div>
+  <section class="hero wrap">
+    <h1><span class="sr">Moma Streetwear</span><span class="logo" aria-hidden="true"></span></h1>
+    <div class="row6" data-row6></div>
+    <div class="intro">
+      <h2>Nato in sala prove, fatto per la strada.</h2>
+      <div class="side">
+        <p>Studio Flow: volumi ampi, vita con coulisse, banda laterale a contrasto. Sei colori, fatto in Italia.</p>
+        <a class="cta" href="#A-buy">Scegli il tuo colore · 59 €<i data-arrow></i></a>
+      </div>
+    </div>
+  </section>
+  <div class="band mq" aria-hidden="true"><div data-mq="Studio Flow|Sei colori|Fatto in Italia|Due a 109 €"></div></div>
+  <section class="bento wrap" id="A-buy" data-buy data-start="Nero">
+    <div class="b-stage rv stage" data-tiltzone>
+      <div class="stripe"></div>
+      <span class="ghost" data-cname>Nero</span>
+      <div class="tilt" data-tilt><img class="pimg float" data-pimg src="img/Nero.webp" alt="Studio Flow"></div>
+    </div>
+    <div class="b-buy shell rv">
+      <div class="core">
+        <div><h2>Studio Flow</h2><p class="price">59 € <small>oversize · unisex</small></p></div>
+        <div><p class="lab">Colore: <b data-cname>Nero</b></p><div class="sws" data-sw></div></div>
+        <div><p class="lab">Taglia</p><div class="szs" data-sz></div></div>
+        <button class="cta full" data-add>Aggiungi al carrello<i data-arrow></i></button>
+        <p class="note">Spedizione 9 €, gratuita sopra 100 €. Due pantaloni a 109 €, anche di colori diversi.</p>
+      </div>
+    </div>
+    <a class="b-pair rv" href="#A-pair"><b>2 a<br>109 €</b><span>Scegli la coppia, la spedizione è gratis</span><div class="duo"><img src="img/Verdone.webp" alt=""><img src="img/Bordeaux.webp" alt=""></div></a>
+    <div class="b-det rv"><span>Vita con coulisse</span></div>
+    <div class="b-spec rv">
+      <div><span>Tessuto</span><b>70% cotone · 30% poliestere</b></div>
+      <div><span>Taglie</span><b>S/M · L/XL</b></div>
+      <div><span>Fondo</span><b>Elasticizzato</b></div>
+      <div><span>Produzione</span><b>Italia</b></div>
+    </div>
+  </section>
+  <section class="pairS wrap" id="A-pair">
+    <div class="shell rv"><div class="core">
+      <h2>Due colori, 109 €.</h2>
+      <p>Uno per la sala, uno per la strada. Lo sconto di 9 € parte da solo nel carrello e la spedizione è gratuita.</p>
+      <div data-pair></div>
+    </div></div>
+  </section>
+  <section class="story wrap" id="A-story">
+    <div class="bar"></div>
+    <blockquote class="rv">Born in the studio, raised on the street.</blockquote>
+    <div class="rv">
+      <p>Moma Streetwear nasce dai Moma Studios: dalle sale prove, dal sudore e dal ritmo dei ballerini. Chi danza cerca libertà di movimento prima di tutto.</p>
+      <p>Per questo i nostri pantaloni sono larghi, comodi e fatti in Italia con cotoni scelti, per durare lezione dopo lezione.</p>
+    </div>
+  </section>
+  <section class="social wrap">
+    <h2 class="sec rv">Guardalo ballare</h2>
+    <div class="vids" data-vids="Nero:Reel dalla sala prove|Viola:Battle con la crew|Verdone:Freestyle in strada|Bordeaux:Come veste: S/M e L/XL"></div>
+    <div class="follow" data-social="ghost"></div>
+  </section>
+  <section class="faq wrap" id="A-faq">
+    <h2 class="sec rv">Domande</h2>
+    <div class="faqL" data-faq></div>
+  </section>
+  <footer class="wrap">
+    <div class="fcols" data-foot></div>
+    <div class="pay" data-pay></div>
+    <span class="logo" aria-hidden="true"></span>
+    <p class="legal" data-legal></p>
+  </footer>
+  <div class="mbar" data-mbar><span><b>Studio Flow</b> · 59 €</span><a class="cta" href="#A-buy">Aggiungi<i data-arrow></i></a></div>
+</div>
+
+<!-- ===================== B · CAMPO COLORE ===================== -->
+<div class="v vB" data-v="B" data-name="Campo colore">
+  <div data-nav="Dettagli:#B-det|La coppia:#B-pair|Moma Studios:#B-story|Domande:#B-faq"></div>
+  <section class="heroB" data-buy data-field data-start="Viola">
+    <div class="wipe" data-wipe></div>
+    <div class="mq" aria-hidden="true"><div data-mq="Studio Flow|Studio Flow"></div></div>
+    <div class="obj stage" data-tiltzone><div class="tilt" data-tilt><img class="pimg float" data-pimg src="img/Viola.webp" alt="Studio Flow"></div></div>
+    <div class="heroIn wrap">
+      <div class="card shell"><div class="core">
+        <h1>Studio Flow</h1>
+        <p class="lead">Il pantalone oversize per ballare e per uscire. Sei colori, una banda.</p>
+        <p class="price">59 € <small>· due a 109 €</small></p>
+        <div><p class="lab">Colore: <b data-cname>Viola</b></p><div class="sws" data-sw></div></div>
+        <div class="szs" data-sz></div>
+        <button class="cta full" data-add>Aggiungi al carrello<i data-arrow></i></button>
+      </div></div>
+    </div>
+  </section>
+  <section class="det wrap" id="B-det">
+    <h2 class="sec rv">Fatto per muoversi</h2>
+    <article class="rv" style="--img:url(img/det-vita.jpg)"><div><h3>Vita con coulisse</h3><p>Elastico e cordino: la stringi quanto vuoi, non scende mentre balli.</p></div></article>
+    <article class="rv" style="--img:url(img/det-banda.jpg)"><div><h3>La banda laterale</h3><p>A contrasto su ogni colore. Segue la gamba, dalla sala alla città.</p></div></article>
+    <article class="rv" style="--img:url(img/det-fondo.jpg)"><div><h3>Fondo elasticizzato</h3><p>Il volume resta sopra la caviglia: niente orli sotto le scarpe.</p></div></article>
+  </section>
+  <section class="pairS wrap" id="B-pair">
+    <div class="shell rv"><div class="core">
+      <h2 class="sec">Due a 109 €</h2>
+      <p>Scegli due colori o due taglie. Lo sconto parte da solo nel carrello e la spedizione è gratuita.</p>
+      <div data-pair></div>
+    </div></div>
+  </section>
+  <section class="story wrap" id="B-story">
+    <h2 class="sec rv">Born in the studio, raised on the street.</h2>
+    <div class="rv">
+      <p>Moma Streetwear nasce dentro i Moma Studios, osservando i ballerini in sala prove. Il comfort è la base della creatività: quando il corpo è libero, la testa segue il beat.</p>
+      <p>Ogni capo è realizzato in Italia con cotoni di prima scelta.</p>
+      <div class="soc" data-social="solid"></div>
+    </div>
+  </section>
+  <section class="faq wrap" id="B-faq">
+    <h2 class="sec rv">Domande</h2>
+    <div class="faqL" data-faq></div>
+  </section>
+  <footer class="wrap">
+    <p class="big">Made for movement.</p>
+    <div class="fcols" data-foot></div>
+    <div class="pay" data-pay></div>
+    <p class="legal" data-legal></p>
+  </footer>
+  <div class="mbar" data-mbar><span><b>Studio Flow</b> · 59 €</span><a class="cta" href="#">Aggiungi<i data-arrow></i></a></div>
+</div>
+
+<!-- ===================== C · CREW ===================== -->
+<div class="v vC" data-v="C" data-name="Crew">
+  <div data-nav="Colori:#C-rail|Crew:#C-wall|La coppia:#C-pair|Domande:#C-faq"></div>
+  <section class="hero wrap">
+    <div>
+      <h1 class="disp">Born in the studio. <span>Raised on the street.</span></h1>
+      <p>Studio Flow è il pantalone oversize di Moma, nato tra i ballerini dei Moma Studios. 59 €, due a 109 €.</p>
+      <div class="ctas"><a class="cta" href="#C-buy">Compra ora<i data-arrow></i></a><a class="cta ghost" href="#C-wall">Guarda la crew<i data-arrow></i></a></div>
+    </div>
+    <div class="fan">
+      <div class="ph shell"><div class="core"><div class="vid"><span class="bar"></span><span class="play" data-play></span><img src="img/Grigio.webp" alt=""><span class="cap">Backstage</span></div></div></div>
+      <div class="ph shell"><div class="core"><div class="vid"><span class="bar"></span><span class="play" data-play></span><img src="img/Viola.webp" alt=""><span class="cap">Il vostro reel più visto, in loop senza audio</span></div></div></div>
+      <div class="ph shell"><div class="core"><div class="vid"><span class="bar"></span><span class="play" data-play></span><img src="img/Verdone.webp" alt=""><span class="cap">Freestyle</span></div></div></div>
+    </div>
+  </section>
+  <section class="rail" id="C-rail">
+    <h2 class="disp wrap rv">Scegli il tuo colore</h2>
+    <div class="track" data-rail></div>
+  </section>
+  <section class="buy wrap" id="C-buy" data-buy data-start="Nero">
+    <div class="pic stage rv" data-tiltzone><div class="tilt" data-tilt><img class="pimg float" data-pimg src="img/Nero.webp" alt="Studio Flow"></div></div>
+    <div class="shell rv"><div class="core">
+      <h2 class="disp" style="margin:0">Studio Flow</h2>
+      <p class="price">59 €</p>
+      <p class="hint">Prendine due: 109 € e spedizione gratuita.</p>
+      <div><p class="lab">Colore: <b data-cname>Nero</b></p><div class="sws" data-sw></div></div>
+      <div><p class="lab">Taglia</p><div class="szs" data-sz></div></div>
+      <button class="cta full" data-add>Aggiungi al carrello<i data-arrow></i></button>
+      <div class="perks">
+        <div><b>Fatto in Italia</b>70% cotone, 30% poliestere</div>
+        <div><b>Spedizione 9 €</b>gratuita sopra 100 €</div>
+        <div><b>Vestibilità oversize</b>S/M e L/XL</div>
+        <div><b>Recesso 14 giorni</b>come da Codice del Consumo</div>
+      </div>
+    </div></div>
+  </section>
+  <section class="wall wrap" id="C-wall">
+    <h2 class="disp rv">La crew in Studio Flow</h2>
+    <div class="wallGrid" data-vids="Nero:Reel taggato #momastreetwear|Bordeaux:Lezione di hip hop|Verdone:Freestyle in strada|Marrone:Backstage saggio|Grigio:Battle"></div>
+    <div class="follow" data-social="big"></div>
+  </section>
+  <section class="pairS wrap" id="C-pair">
+    <div class="shell rv"><div class="core">
+      <h2 class="disp">Vieni in coppia: 109 €</h2>
+      <p>Due colori o due taglie diverse. Lo sconto si applica da solo e la spedizione è gratuita.</p>
+      <div data-pair></div>
+    </div></div>
+  </section>
+  <section class="faq wrap" id="C-faq">
+    <h2 class="disp rv">Domande</h2>
+    <div class="faqL" data-faq></div>
+  </section>
+  <footer class="wrap">
+    <span class="logo" role="img" aria-label="Moma Streetwear"></span>
+    <div class="fcols" data-foot></div>
+    <div class="pay" data-pay></div>
+    <p class="legal" data-legal></p>
+  </footer>
+  <div class="mbar" data-mbar><span><b>Studio Flow</b> · 59 €</span><a class="cta" href="#C-buy">Aggiungi<i data-arrow></i></a></div>
+</div>
+
+<!-- ===================== D · FLYER ===================== -->
+<div class="v vD" data-v="D" data-name="Flyer">
+  <div data-nav="Compra:#D-ticket|Colori:#D-lineup|Chi siamo:#D-mani|Domande:#D-faq"></div>
+  <section class="poster wrap">
+    <div>
+      <p class="pres">Moma Studios presenta</p>
+      <h1 class="anton"><span class="l1">Studio</span><span class="l2">Flow</span></h1>
+    </div>
+    <div class="pantW stage" data-tiltzone><div class="tilt" data-tilt><img class="float" src="img/Viola.webp" alt="Studio Flow viola"></div></div>
+    <div class="stk s1">2 a<br>109 €</div>
+    <div class="stk s2">S/M · L/XL</div>
+    <div class="stk s3">Made in Italy</div>
+    <div class="info"><span>Pantalone oversize · 6 colori · fatto in Italia</span><a class="cta" href="#D-ticket">Prendi il tuo · 59 €<i data-arrow></i></a></div>
+  </section>
+  <section class="ticket wrap" id="D-ticket" data-buy data-start="Nero">
+    <div class="main">
+      <div class="stage" data-tiltzone><div class="tilt" data-tilt><img class="pimg" data-pimg src="img/Nero.webp" alt="Studio Flow"></div></div>
+      <div>
+        <div><h2 class="anton">Studio Flow</h2><p class="price">59 €</p></div>
+        <div><p class="lab">Colore: <b data-cname>Nero</b></p><div class="sws" data-sw></div></div>
+        <div><p class="lab">Taglia</p><div class="szs" data-sz></div></div>
+        <div><button class="cta" data-add>Aggiungi al carrello<i data-arrow></i></button></div>
+      </div>
+    </div>
+    <div class="stub"><b>Sala +<br>strada</b><span>Spedizione 9 €, gratuita sopra 100 €. Recesso entro 14 giorni.</span></div>
+  </section>
+  <section class="lineup wrap" id="D-lineup" data-lineupsec>
+    <h2 class="anton rv">La line-up</h2>
+    <ol data-lineup></ol>
+    <div class="follower" data-follower><img data-lineimg src="img/Nero.webp" alt=""></div>
+  </section>
+  <section class="pairS wrap">
+    <div class="shell rv"><div class="core">
+      <h2 class="anton">Vieni in coppia</h2>
+      <p>Due Studio Flow a 109 € invece di 118 €. Lo sconto parte da solo, la spedizione è gratuita.</p>
+      <div data-pair></div>
+    </div></div>
+  </section>
+  <section class="mani wrap rv" id="D-mani">
+    <h2 class="anton">Born in the studio, raised on the street.</h2>
+    <div>
+      <p>Nati dentro i Moma Studios, tra sudore e ritmo. I nostri “tutoni” sono per chi non ha paura di occupare spazio: volumi ampi e libertà per ogni passo.</p>
+      <p>Qualità italiana, spirito urban. Sul palco, in una battle o in giro con la crew.</p>
+      <div class="soc" data-social="solid"></div>
+    </div>
+  </section>
+  <section class="faq wrap" id="D-faq">
+    <h2 class="anton sec rv">Domande</h2>
+    <div class="faqL" data-faq></div>
+  </section>
+  <footer class="wrap">
+    <span class="logo" aria-hidden="true"></span>
+    <div class="fcols" data-foot></div>
+    <div class="pay" data-pay></div>
+    <p class="legal" data-legal></p>
+  </footer>
+  <div class="mbar" data-mbar><span><b>Studio Flow</b> · 59 €</span><a class="cta" href="#D-ticket">Aggiungi<i data-arrow></i></a></div>
+</div>
+
+<div class="toast" role="status" aria-live="polite"></div>
+<div id="proto"><button data-prev aria-label="Variante precedente">‹</button><span class="lb"></span><button data-next aria-label="Variante successiva">›</button></div>
+<aside id="notes"></aside>
+
+<script>
+const COLORS=[
+ {n:'Nero',hex:'#151515',band:'bianca'},
+ {n:'Grigio',hex:'#c9c9c6',band:'nera',light:1},
+ {n:'Verdone',hex:'#1f4a32',band:'bianca'},
+ {n:'Bordeaux',hex:'#6d1b24',band:'bianca'},
+ {n:'Viola',hex:'#6a2fa3',band:'bianca'},
+ {n:'Marrone',hex:'#5b3421',band:'panna'}];
+const SIZES=['S/M','L/XL'];
+const byName=n=>COLORS.find(c=>c.n===n);
+const img=n=>`img/${n}.webp`;
+const ARROW='<svg class="i" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>';
+const PLUS='<svg class="i" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>';
+const BAG='<svg class="i" viewBox="0 0 24 24"><path d="M5 8h14l-1.2 12H6.2L5 8Z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>';
+const PLAY='<svg viewBox="0 0 24 24" width="16" height="16"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>';
+
+const FAQ=[
+ ['Quanto costa la spedizione?','In Italia 9 € per ordini fino a 100 €, gratuita sopra i 100 €. Con due pantaloni a 109 € la spedizione è già gratuita.'],
+ ['Che taglia prendo?','Studio Flow è oversize ed esiste in S/M e L/XL. Qui va la tabella misure (vita, lunghezza, cavallo) con l’altezza dei ballerini nelle foto.'],
+ ['Come funziona la coppia a 109 €?','Aggiungi al carrello due Studio Flow, anche di colori o taglie diverse: lo sconto di 9 € si applica da solo a ogni coppia.'],
+ ['Di che tessuto è?','70% cotone, 30% poliestere. Vita elasticizzata con coulisse, fondo elasticizzato, banda laterale a contrasto. Realizzato in Italia.'],
+ ['Posso restituirlo?','Sì: hai 14 giorni dalla consegna per esercitare il diritto di recesso, come previsto dal Codice del Consumo. Tutti i passaggi sono nella pagina Resi e rimborsi.'],
+ ['Come posso pagare?','Con i metodi attivi su Shopify Payments e PayPal: carte, Apple Pay, Google Pay e Shop Pay. Il checkout è quello sicuro di Shopify.']];
+const PAY=['Visa','Mastercard','American Express','PayPal','Apple Pay','Google Pay','Shop Pay'];
+const SOCIAL=[['Instagram','#'],['TikTok','#'],['Facebook','#']];
+const FOOT=[['Negozio',['Studio Flow','La coppia a 109 €','Guida alle taglie']],
+ ['Aiuto',['Spedizioni','Resi e rimborsi','Contatti','Tracciamento ordine']],
+ ['Legale',['Termini di vendita','Privacy policy','Cookie policy','Note legali']],
+ ['Seguici',['Instagram','TikTok','Facebook']]];
+const LEGAL='© 2026 Moma Streetwear · [Ragione sociale] · [Sede legale] · P.IVA [da inserire] · Preferenze cookie';
+const $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// ---- blocchi comuni ----
+$$('[data-nav]').forEach(el=>{
+  const links=el.dataset.nav.split('|').map(x=>x.split(':'));
+  el.outerHTML=`<nav class="nav" aria-label="Menu"><span class="logo" role="img" aria-label="Moma Streetwear"></span><div class="links">${links.map(([t,h])=>`<a href="${h}">${t}</a>`).join('')}</div><div class="right"><button class="cartb" aria-label="Carrello">${BAG}<b data-count>0</b></button><button class="burger" aria-label="Apri il menu" aria-expanded="false"><span></span><span></span></button></div></nav><div class="menu">${links.map(([t,h])=>`<a href="${h}">${t}</a>`).join('')}</div>`;
+});
+$$('.v').forEach(v=>{
+  const nav=v.querySelector('.nav'),menu=v.querySelector('.menu'),b=v.querySelector('.burger');
+  const set=o=>{nav.classList.toggle('open',o);menu.classList.toggle('on',o);b.setAttribute('aria-expanded',o)};
+  b.onclick=()=>set(!nav.classList.contains('open'));
+  menu.onclick=e=>{if(e.target.closest('a'))set(false)};
+});
+$$('[data-arrow]').forEach(i=>i.innerHTML=ARROW);
+$$('[data-play]').forEach(i=>i.innerHTML=PLAY);
+$$('[data-mq]').forEach(el=>{const w=el.dataset.mq.split('|');const one=w.map(t=>`<span>${t}</span><span class="dot"></span>`).join('');el.innerHTML=one+one+one+one});
+$$('[data-faq]').forEach(el=>el.innerHTML=FAQ.map(([q,a])=>`<details><summary>${q}<i>${PLUS}</i></summary><p>${a}</p></details>`).join(''));
+$$('[data-pay]').forEach(el=>el.innerHTML=PAY.map(p=>`<span>${p}</span>`).join(''));
+$$('[data-legal]').forEach(el=>el.textContent=LEGAL);
+$$('[data-foot]').forEach(el=>el.innerHTML=FOOT.map(([h,l])=>`<div><h3>${h}</h3><ul>${l.map(x=>`<li><a href="#">${x}</a></li>`).join('')}</ul></div>`).join(''));
+$$('[data-social]').forEach(el=>{
+  const k=el.dataset.social;
+  el.innerHTML=SOCIAL.map(([n,u])=>k==='big'?`<a href="${u}">${n}<i>${ARROW}</i></a>`:`<a class="cta${k==='ghost'?' ghost':''}" href="${u}">${n}<i>${ARROW}</i></a>`).join('');
+});
+$$('[data-vids]').forEach(el=>el.innerHTML=el.dataset.vids.split('|').map(x=>{const[c,t]=x.split(':');return `<div class="vid rv"><span class="play">${PLAY}</span><img src="${img(c)}" alt=""><span class="cap">${t}</span></div>`}).join(''));
+$$('[data-row6]').forEach(el=>el.innerHTML=COLORS.map(c=>`<button data-pick="${c.n}" aria-label="Studio Flow ${c.n}"><img src="${img(c.n)}" alt=""><span>${c.n}</span></button>`).join(''));
+$$('[data-rail]').forEach(el=>el.innerHTML=COLORS.map(c=>`<button class="card${c.light?' light':''}" style="--c:${c.hex}" data-pick="${c.n}"><img src="${img(c.n)}" alt=""><b>${c.n}</b><small>Banda ${c.band} · 59 €<i>${ARROW}</i></small></button>`).join(''));
+$$('[data-lineup]').forEach(el=>el.innerHTML=COLORS.map(c=>`<li><button data-pick="${c.n}"><span class="anton">${c.n}</span><small>Banda ${c.band}</small></button></li>`).join(''));
+
+const toast=document.querySelector('.toast');
+function say(t){toast.textContent=t;toast.classList.add('show');clearTimeout(say.t);say.t=setTimeout(()=>toast.classList.remove('show'),2600)}
+function bump(v,n){const c=v.querySelector('[data-count]');c.textContent=+c.textContent+n;const b=c.parentNode;b.classList.remove('bump');void b.offsetWidth;b.classList.add('bump')}
+
+function swatches(el,cur,onPick){
+  el.innerHTML=COLORS.map(c=>`<button class="sw" style="--c:${c.hex}" aria-label="${c.n}" aria-pressed="${c.n===cur}" data-c="${c.n}"></button>`).join('');
+  el.onclick=e=>{const b=e.target.closest('[data-c]');if(!b)return;el.querySelectorAll('.sw').forEach(s=>s.setAttribute('aria-pressed',s===b));onPick(b.dataset.c,b)};
+}
+function sizes(el,onPick){
+  el.innerHTML=SIZES.map((s,i)=>`<button class="sz" aria-pressed="${i===0}" data-s="${s}">${s}</button>`).join('');
+  el.onclick=e=>{const b=e.target.closest('[data-s]');if(!b)return;el.querySelectorAll('.sz').forEach(s=>s.setAttribute('aria-pressed',s===b));onPick(b.dataset.s)};
+}
+
+// ---- blocco acquisto ----
+$$('[data-buy]').forEach(root=>{
+  const v=root.closest('.v');
+  const st={c:root.dataset.start||'Nero',s:'S/M'};
+  const field=(c,from)=>{
+    const ink=()=>{v.style.setProperty('--fink',c.light?'#121212':'#fff');v.classList.toggle('light',!!c.light)};
+    const done=()=>{v.style.setProperty('--field',c.hex);root.style.background=c.hex};
+    const w=root.querySelector('[data-wipe]');
+    ink();
+    if(!w||!from||calm||!w.animate){done();return}
+    const r=root.getBoundingClientRect(),b=from.getBoundingClientRect();
+    const x=b.left+b.width/2-r.left,y=b.top+b.height/2-r.top;
+    w.style.background=c.hex;
+    w.animate([{clipPath:`circle(0px at ${x}px ${y}px)`},{clipPath:`circle(${Math.hypot(r.width,r.height)}px at ${x}px ${y}px)`}],{duration:900,easing:'cubic-bezier(.32,.72,0,1)'}).onfinish=()=>{done();w.style.background='transparent'};
+  };
+  const set=(n,from)=>{
+    st.c=n;const c=byName(n);
+    root.querySelectorAll('[data-pimg]').forEach(i=>{if(i.getAttribute('src')===img(n))return;i.classList.add('swap');setTimeout(()=>{i.src=img(n);i.alt='Studio Flow '+n;i.classList.remove('swap')},220)});
+    v.querySelectorAll('[data-cname]').forEach(t=>t.textContent=n);
+    v.style.setProperty('--pick',c.hex);
+    if(root.hasAttribute('data-field'))field(c,from);
+    const sw=root.querySelector('[data-sw]');sw&&sw.querySelectorAll('.sw').forEach(s=>s.setAttribute('aria-pressed',s.dataset.c===n));
+    v.querySelectorAll('[data-pick]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.pick===n));
+    v.querySelectorAll('[data-lineimg]').forEach(i=>i.src=img(n));
+  };
+  root._set=set;
+  swatches(root.querySelector('[data-sw]'),st.c,(n,b)=>set(n,b));
+  sizes(root.querySelector('[data-sz]'),s=>st.s=s);
+  root.querySelectorAll('[data-add]').forEach(b=>b.onclick=()=>{bump(v,1);say(`Aggiunto: Studio Flow ${st.c} ${st.s} · 59 € (mock-up)`)});
+  set(st.c);
+});
+$$('[data-pick]').forEach(b=>b.addEventListener('click',()=>{
+  const v=b.closest('.v');const buy=v.querySelector('[data-buy]');buy._set(b.dataset.pick);
+  if(!buy.contains(b))buy.scrollIntoView({behavior:calm?'auto':'smooth',block:'start'});
+}));
+
+// ---- inclinazione 3D al passaggio ----
+if(!calm)$$('[data-tiltzone]').forEach(z=>{
+  const t=z.querySelector('[data-tilt]');
+  z.addEventListener('pointermove',e=>{const r=z.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;t.style.transform=`rotateY(${x*16}deg) rotateX(${-y*12}deg) scale(1.03)`});
+  z.addEventListener('pointerleave',()=>t.style.transform='');
+});
+
+// ---- immagine che segue il cursore nella line-up ----
+$$('[data-lineupsec]').forEach(sec=>{
+  const f=sec.querySelector('[data-follower]'),i=f.querySelector('img');
+  sec.addEventListener('pointerleave',()=>f.style.transform='');
+  sec.addEventListener('pointermove',e=>{const r=sec.getBoundingClientRect();f.style.transform=`translate(${e.clientX-r.left-r.width*.62+30}px,${e.clientY-r.top-290}px)`});
+  sec.querySelectorAll('[data-pick]').forEach(b=>b.addEventListener('pointerenter',()=>i.src=img(b.dataset.pick)));
+});
+
+// ---- costruttore coppia ----
+$$('[data-pair]').forEach(el=>{
+  const v=el.closest('.v');
+  const st=[{c:'Nero',s:'S/M'},{c:'Viola',s:'S/M'}];
+  el.className='pair';
+  el.innerHTML=st.map((x,i)=>`<div class="slot" data-i="${i}"><img src="${img(x.c)}" alt=""><div><div class="sws"></div><div class="szs"></div><p class="lab" style="margin:10px 0 0">${i?'Secondo':'Primo'}: <b class="nm">${x.c}</b></p></div></div>${i?'':'<div class="op">+</div>'}`).join('')+
+   `<div class="op">=</div><div class="tot"><b>109 €</b><s>118 €</s> · spedizione gratuita<br><button class="cta">Aggiungi la coppia<i>${ARROW}</i></button></div>`;
+  el.querySelectorAll('.slot').forEach(s=>{const i=+s.dataset.i;
+    swatches(s.querySelector('.sws'),st[i].c,n=>{st[i].c=n;s.querySelector('img').src=img(n);s.querySelector('.nm').textContent=n});
+    sizes(s.querySelector('.szs'),z=>st[i].s=z);
+  });
+  el.querySelector('.tot .cta').onclick=()=>{bump(v,2);say(`Aggiunta la coppia: ${st[0].c} ${st[0].s} + ${st[1].c} ${st[1].s} · 109 € (mock-up)`)};
+});
+
+// ---- barra "Aggiungi" su telefono: appare quando il blocco acquisto è sopra lo schermo ----
+$$('.v').forEach(v=>{
+  const bar=v.querySelector('[data-mbar]'),buy=v.querySelector('[data-buy]');
+  new IntersectionObserver(([e])=>bar.classList.toggle('on',!e.isIntersecting&&e.boundingClientRect.top<0)).observe(buy);
+  bar.querySelector('a').addEventListener('click',e=>{e.preventDefault();buy.scrollIntoView({behavior:calm?'auto':'smooth'})});
+});
+
+// ---- ingresso del primo schermo ----
+const intro={A:'.vA .hero .logo, .vA .row6 button, .vA .intro>*',B:'.vB .card, .vB .obj',C:'.vC .hero h1, .vC .hero p, .vC .ctas, .vC .fan',D:'.vD .pres, .vD h1 span, .vD .pantW, .vD .info'};
+function enter(k){
+  if(calm)return;
+  $$(intro[k]).forEach((el,i)=>el.animate([{opacity:0,translate:'0 40px',filter:'blur(8px)'},{opacity:1,translate:'0 0',filter:'blur(0)'}],{duration:1100,delay:80+i*70,easing:'cubic-bezier(.32,.72,0,1)',fill:'backwards'}));
+}
+
+// ---- note Shopify (solo con ?note=1) ----
+const NOTES={
+ A:['Tema Spotlight attuale, font Archivo caricato nel tema.','Menu a pillola: header con CSS personalizzato (posizione fissa, sfondo sfocato).','Fila dei 6 colori e griglia a riquadri: sezione Liquid personalizzato che legge le varianti del prodotto.','Coppia a 109 €: sconto automatico esistente + blocco che aggiunge 2 varianti con /cart/add.js.','Video: sezione Video con i reel caricati; FAQ: Contenuto comprimibile.'],
+ B:['Hero = Prodotto in evidenza con sfondo legato al colore scelto (poco JS nel tema).','Effetto cerchio al cambio colore: clip-path CSS, nessuna app.','Dettagli: tre immagini ritagliate dalla foto prodotto.','Barra Aggiungi fissa su telefono: blocco Liquid.'],
+ C:['Sfondo scuro con due aloni di colore fissi via CSS.','Telefoni con video: sezione Video o app gratuita per feed TikTok/Instagram.','Binario colori: Multicolonna con scorrimento orizzontale.','Muro crew: video caricati dai reel.'],
+ D:['Font Anton caricato nel tema.','Poster: Banner immagine + adesivi in Liquid personalizzato.','Biglietto con i buchi: maschera CSS sul blocco prodotto.','Line-up con immagine che segue il mouse: poco JS, su telefono si spegne.']};
+const notes=document.getElementById('notes');
+
+// ---- switcher varianti ----
+const vs=$$('.v');const keys=vs.map(v=>v.dataset.v);
+const q=new URLSearchParams(location.search);
+const HASH={monumento:'A',campo:'B',crew:'C',flyer:'D'};
+function show(k){
+  vs.forEach(v=>v.classList.toggle('on',v.dataset.v===k));
+  const v=vs.find(v=>v.dataset.v===k);
+  document.querySelector('#proto .lb').innerHTML=`<b>${k}</b> · ${v.dataset.name} <span style="opacity:.8">${keys.indexOf(k)+1}/${keys.length}</span>`;
+  try{const u=new URL(location);u.hash=Object.keys(HASH).find(h=>HASH[h]===k);history.replaceState(null,'',u)}catch(e){}
+  if(q.get('note')==='1'){notes.classList.add('on');notes.innerHTML=`<h3>Come si fa su Shopify · ${k}</h3><ul>${NOTES[k].map(n=>`<li>${n}</li>`).join('')}</ul>`}
+  window.scrollTo(0,0);enter(k);
+}
+let cur=HASH[location.hash.slice(1)]||(keys.includes(q.get('variant'))?q.get('variant'):'A');
+const step=d=>{cur=keys[(keys.indexOf(cur)+d+keys.length)%keys.length];show(cur)};
+document.querySelector('[data-prev]').onclick=()=>step(-1);
+document.querySelector('[data-next]').onclick=()=>step(1);
+addEventListener('keydown',e=>{if(e.target.closest('input,textarea,[contenteditable]'))return;if(e.key==='ArrowLeft')step(-1);if(e.key==='ArrowRight')step(1)});
+show(cur);
+</script>
+
+</body>
+</html>
